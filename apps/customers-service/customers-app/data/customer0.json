@@ -1,0 +1,13 @@
+{
+  "id": 0,
+  "name": "John",
+  "familyName": "Doe",
+  "country": "UK",
+  "payments": [{
+    "type": "cc",
+    "code": "1234"
+  }, {
+    "type": "iban",
+    "code": "4321 3455"
+  }]
+}
