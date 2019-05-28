@@ -46,10 +46,6 @@ case class AggregatedPaymentsTable() {
   var list = List.empty[PaymentWithID]
   def addPayment(customerId: String, payment: PaymentWithID): AggregatedPaymentsTable = {
     this.customerId = customerId
-    println(list)
-    println("---")
-    println(payment)
-    println("****")
     list = list.find(_.id == payment.id)  match {
       case Some(_) => {
         list
@@ -146,7 +142,7 @@ object PaymentsEventHandler {
     config.put(StreamsConfig.APPLICATION_ID_CONFIG, "PaymentsEventHandler")
     config.put(StreamsConfig.CLIENT_ID_CONFIG, clientId)
 
-    config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
+    config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:29092")
     config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String.getClass.getName)
     config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, "100")
     config.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, "4")

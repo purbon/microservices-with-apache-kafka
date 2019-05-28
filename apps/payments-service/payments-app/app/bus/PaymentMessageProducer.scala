@@ -18,7 +18,7 @@ class PaymentsKafkaProducer {
 
   private def configure(): Properties = {
     val props = new Properties
-    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:29092")
     props.put(ProducerConfig.CLIENT_ID_CONFIG, "ConsumerProducer")
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")

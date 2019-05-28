@@ -25,7 +25,8 @@ RUN  apk add --no-cache git openssh
 # in the container /root directory
 
 ENV PROJECT_HOME /usr/src
-ENV PROJECT_NAME payments-app
+ENV PROJECT_NAME customers-app
+ENV PROJECT_VERSION 1.0
 
 #COPY ${PROJECT_NAME} ${PROJECT_HOME}/${PROJECT_NAME}
 #RUN cd $PROJECT_HOME/$PROJECT_NAME && \
@@ -33,18 +34,19 @@ ENV PROJECT_NAME payments-app
 
 # Command
 
-ENV ARTEFACT target/universal/payments-app-1.0-SNAPSHOT.zip
-COPY ${PROJECT_NAME}/${ARTEFACT} ${PROJECT_HOME}/${PROJECT_NAME}/payments-app-1.0-SNAPSHOT.zip
-RUN cd $PROJECT_HOME/$PROJECT_NAME && unzip payments-app-1.0-SNAPSHOT.zip
+ENV ARTEFACT target/universal/customers-app-${PROJECT_VERSION}.zip
+COPY ${PROJECT_NAME}/${ARTEFACT} ${PROJECT_HOME}/${PROJECT_NAME}/customers-app-${PROJECT_VERSION}.zip
+RUN cd $PROJECT_HOME/$PROJECT_NAME && unzip customers-app-${PROJECT_VERSION}.zip
 
 
 # Expose code volume and play port 9000
 
 EXPOSE 9000
-#VOLUME "payments-app"
-WORKDIR $PROJECT_HOME/$PROJECT_NAME/payments-app-1.0-SNAPSHOT
+#VOLUME "customers-app"
+WORKDIR $PROJECT_HOME/$PROJECT_NAME/customers-app-${PROJECT_VERSION}
 
 ENV APPLICATION_SECRET Q%X57W7Efy
-ENV PATH="$PROJECT_HOME/$PROJECT_NAME/payments-app-1.0-SNAPSHOT:${PATH}"
+ENV PATH="$PROJECT_HOME/$PROJECT_NAME/customers-app-${PROJECT_VERSION}:${PATH}"
 ENV PLAY_HTTP_PORT ${PLAY_HTTP_PORT:-9000}
-CMD ["bin/payments-app"]
+
+CMD ["bin/customers-app"]

@@ -10,7 +10,7 @@ import scala.concurrent.Future
 @Singleton
 class PaymentsService @Inject()(kafkaService: KafkaService, ws: WSClient) extends JsonWriterAndReadersModule {
 
-  private val PAYMENTS_SERVICE: String = "http://localhost:9001"
+  private val PAYMENTS_SERVICE: String = "http://payments-service:9001"
 
   def show(id: Int): Payment = ???
 

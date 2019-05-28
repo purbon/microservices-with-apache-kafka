@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## build the customer app deliverables
+
+docker-compose up -d --build
+
+sleep 1
+## create the necessary internal topics
+docker-compose exec kafka kafka-topics --create --topic customers --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1
+docker-compose exec kafka kafka-topics --create --topic payments --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1
