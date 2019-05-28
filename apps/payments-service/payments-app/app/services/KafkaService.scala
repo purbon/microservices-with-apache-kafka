@@ -1,12 +1,12 @@
 package services
 
-import bus.PaymentKafkaProducer
+import bus.PaymentMessageProducer
 import javax.inject.{Inject, Singleton}
 import models.{JsonWriterAndReadersModule, Payment}
 import play.api.libs.json.Json
 
 @Singleton
-class KafkaService @Inject()(bus: PaymentKafkaProducer) extends  JsonWriterAndReadersModule {
+class KafkaService @Inject()(bus: PaymentMessageProducer) extends  JsonWriterAndReadersModule {
 
   def publish(customerId: Int, payment: Payment): Boolean = {
     try {
