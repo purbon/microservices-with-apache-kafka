@@ -6,7 +6,7 @@ RUN  apk add --no-cache git openssh
 
 ENV PROJECT_HOME /usr/src
 ENV PROJECT_NAME api-gateway-app
-ENV PROJECT_VERSION 1.0
+ENV PROJECT_VERSION 1.1
 
 
 ENV ARTEFACT target/universal/${PROJECT_NAME}-${PROJECT_VERSION}.zip

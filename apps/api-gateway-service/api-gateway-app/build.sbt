@@ -2,7 +2,7 @@ name := """api-gateway-app"""
 organization := "com.purbon"
 maintainer := "pere.urbon@acm.org"
 
-version := "1.0"
+version := "1.1"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
