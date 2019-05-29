@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "Hans",
+  "familyName": "Ku",
+  "country": "DE",
+  "payments": [{
+    "type": "delivery",
+    "code": ""
+  }, {
+    "type": "iban",
+    "code": "4321 3455"
+  }]
+}

@@ -38,7 +38,7 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
     volumes:
-       - $PWD/scripts:/scripts
+       - ./scripts:/scripts
 
   schema-registry:
     image: confluentinc/cp-schema-registry:5.2.1
@@ -80,8 +80,20 @@ services:
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
       CONNECT_PLUGIN_PATH: '/usr/share/java'
     volumes:
-     - $PWD/scripts:/scripts
+     - ./scripts:/scripts
 
+  api-gateway-app:
+    build: apps/api-gateway-service
+    container_name: api-gateway-service
+    networks:
+      - mesh
+    ports:
+      - "8080:8080"
+    environment:
+      PLAY_HTTP_PORT: 8080
+    depends_on:
+      - consumers-app
+      - payments-app
 
   consumers-app:
     build: apps/customers-service
