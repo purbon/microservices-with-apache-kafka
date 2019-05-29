@@ -4,7 +4,12 @@
 
 docker-compose up -d --build
 
-sleep 1
-## create the necessary internal topics
+
+
+## wait until kafka is fully available
+docker-compose exec kafka /scripts/wait-for zookeeper:2181
+docker-compose exec kafka /scripts/wait-for kafka:9092
+
+## create the necessary internal topics, so the streams up has all topics it needs
 docker-compose exec kafka kafka-topics --create --topic customers --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1
 docker-compose exec kafka kafka-topics --create --topic payments --zookeeper zookeeper:2181 --partitions 1 --replication-factor 1
