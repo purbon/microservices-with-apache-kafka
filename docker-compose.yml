@@ -42,6 +42,8 @@ services:
 
   schema-registry:
     image: confluentinc/cp-schema-registry:5.2.1
+    networks:
+      - mesh
     depends_on:
       - zookeeper
       - kafka
